@@ -24,7 +24,7 @@ This project implements a server using the Model Context Protocol (MCP) that all
 To install GitLab MR MCP for Claude Desktop automatically via Smithery:
 
 ```bash
-npx -y @smithery/cli@latest install @kopfrechner/gitlab-mr-mcp --client claude --config '"{\"gitlabMrMcpToken\":\"YOUR_GITLAB_TOKEN\"}"'
+npx -y @smithery/cli@latest install @kopfrechner/gitlab-mr-mcp --client claude --config '"{\"gitlabMrMcpUrl\":\"YOUR_GITLAB_URL\",\"gitlabMrMcpToken\":\"YOUR_GITLAB_TOKEN\"}"'
 ```
 
 ### 🛠️ Manual Installation
@@ -50,10 +50,11 @@ npm install
   "mcpServers": {
     "gitlab-mr-mcp": {
       "command": "node",
-      "args": ["/path/to/gitlab-mr-mcp/index.js"]
-    }
-    "env": {
-      "MR_MCP_GITLAB_TOKEN": "your_gitlab_token"
+      "args": ["/path/to/gitlab-mr-mcp/index.js"],
+      "env": {
+        "MR_MCP_GITLAB_URL": "your_gitlab_url",
+        "MR_MCP_GITLAB_TOKEN": "your_gitlab_token"
+      }
     }
   }
 }
@@ -92,6 +93,7 @@ npm install
 Set up environment variables:
 
 ```bash
+export MR_MCP_GITLAB_URL=your_gitlab_url
 export MR_MCP_GITLAB_TOKEN=your_gitlab_token
 ```
 
