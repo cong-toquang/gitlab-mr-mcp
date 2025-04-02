@@ -11,12 +11,17 @@ import _ from "lodash";
 const execAsync = promisify(exec);
 
 // Initialize GitLab API Client
+const gitlabUrl = process.env.MR_MCP_GITLAB_URL;
+if (!gitlabUrl) {
+  console.error("Error: MR_MCP_GITLAB_URL environment variable is not set.");
+}
 const gitlabToken = process.env.MR_MCP_GITLAB_TOKEN;
 if (!gitlabToken) {
   console.error("Error: MR_MCP_GITLAB_TOKEN environment variable is not set.");
 }
 
 const api = new Gitlab({
+  host: gitlabUrl,
   token: gitlabToken,
 });
 
